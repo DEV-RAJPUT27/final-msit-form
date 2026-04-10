@@ -566,8 +566,8 @@ export default function AdmissionForm() {
           setTimeout(() => {
             try {
               document.body.removeChild(iframe);
-            } catch (e) {
-              console.log("Iframe already removed");
+            } catch (e:any) {
+              console.log("Iframe already removed", e);
             }
             alert("Form submitted successfully! Please press OK to download the processed form.");
             savePdf();
