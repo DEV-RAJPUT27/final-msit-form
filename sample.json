@@ -1,0 +1,102 @@
+{
+    "programSelection": {
+      "firstYearProgram": "CSE-1st Shift,IT-1st Shift",
+      "secondYearProgram": "",
+      "programmeName": "B.Tech Computer Science and Engineering",
+      "programmeCode": "131",
+      "preferredShift": "1st Shift",
+      "registrationNumber": "IPU2024123456",
+      "registrationDate": "2024-04-15",
+      "rollNumber": "NEET2024789456",
+      "rank": "1234"
+    },
+    "applicant": {
+      "name": "Mohit Arora",
+      "fatherName": "GodFather",
+      "motherName": "--",
+      "dob": "2000-01-15",
+      "address": "123 Main Street, New Delhi, Pin: 110001",
+      "contact": "9876543210",
+      "email": "mannyisha808@gmail.com",
+      "category": "General",
+      "categoryCertificate": "https://drive.google.com/file/d/1brNzq9VoxQT-WzZRuvOXGahMhQl3CIQR/view?usp=sharing",
+      "region": "Delhi"
+    },
+    "tenth": {
+      "board": "CBSE",
+      "rollNumber": "A1234567",
+      "yearOfPassing": "2015",
+      "subjects": {
+        "subject1": { "name": "English", "marks": "85" },
+        "subject2": { "name": "Hindi", "marks": "82" },
+        "subject3": { "name": "Mathematics", "marks": "95" },
+        "subject4": { "name": "Science", "marks": "90" },
+        "subject5": { "name": "Social Science", "marks": "88" },
+        "subject6": { "name": "Information Technology", "marks": "92" }
+      },
+      "totalMarksObtained": "532",
+      "maximumMarks": "600",
+      "percentage": "88.67",
+      "marksheetLink": "https://drive.google.com/file/d/1brNzq9VoxQT-WzZRuvOXGahMhQl3CIQR/view?usp=sharing"
+    },
+    "twelfth": {
+      "board": "CBSE",
+      "rollNumber": "B9876543",
+      "yearOfPassing": "2017",
+      "subjects": {
+        "subject1": { "name": "English", "marks": "88" },
+        "subject2": { "name": "Physics", "marks": "92" },
+        "subject3": { "name": "Chemistry", "marks": "90" },
+        "subject4": { "name": "Mathematics", "marks": "95" },
+        "subject5": { "name": "Computer Science", "marks": "94" },
+        "subject6": { "name": "Physical Education", "marks": "85" }
+      },
+      "pcmMarks": "277",
+      "pcmPercentage": "92.33",
+      "totalMarksObtained": "544",
+      "maximumMarks": "600",
+      "percentage": "90.67",
+      "marksheetLink": "https://drive.google.com/file/d/1brNzq9VoxQT-WzZRuvOXGahMhQl3CIQR/view?usp=sharing"
+    },
+    "diploma": {
+      "university": "Delhi Technical University",
+      "rollNumber": "DTU2021123",
+      "firstYear": {
+        "yearOfPassing": "2019",
+        "subjects": "Computer Science, Mathematics, Electronics",
+        "maximumMarks": "1000",
+        "marksObtained": "850",
+        "percentage": "85.0"
+      },
+      "secondYear": {
+        "subjects": "Data Structures, DBMS, Networking",
+        "maximumMarks": "1000",
+        "marksObtained": "880",
+        "percentage": "88.0"
+      },
+      "thirdYear": {
+        "subjects": "Software Engineering, Web Development, AI",
+        "maximumMarks": "1000",
+        "marksObtained": "920",
+        "percentage": "92.0"
+      },
+      "aggregate": {
+        "maximumMarks": "3000",
+        "marksObtained": "2650",
+        "percentage": "88.33"
+      },
+      "marksheetLink": "https://drive.google.com/file/d/1brNzq9VoxQT-WzZRuvOXGahMhQl3CIQR/view?usp=sharing"
+    },
+    "documents": {
+      "photoLink": "https://drive.google.com/file/d/1brNzq9VoxQT-WzZRuvOXGahMhQl3CIQR/view?usp=sharing",
+      "admitCardLink": "https://drive.google.com/file/d/1brNzq9VoxQT-WzZRuvOXGahMhQl3CIQR/view?usp=sharing",
+      "ipuFormLink": "https://drive.google.com/file/d/1brNzq9VoxQT-WzZRuvOXGahMhQl3CIQR/view?usp=sharing",
+      "candidateSignatureLink": "https://drive.google.com/file/d/1brNzq9VoxQT-WzZRuvOXGahMhQl3CIQR/view?usp=sharing",
+      "parentSignatureLink": "https://drive.google.com/file/d/1brNzq9VoxQT-WzZRuvOXGahMhQl3CIQR/view?usp=sharing",
+      "gapCertificateLink": "https://drive.google.com/file/d/1brNzq9VoxQT-WzZRuvOXGahMhQl3CIQR/view?usp=sharing",
+      "aadharCardLink": "https://drive.google.com/file/d/1brNzq9VoxQT-WzZRuvOXGahMhQl3CIQR/view?usp=sharing"
+    },
+    "payment": {
+      "paymentProofLink": "https://drive.google.com/file/d/1brNzq9VoxQT-WzZRuvOXGahMhQl3CIQR/view?usp=sharing"
+    }
+  }
