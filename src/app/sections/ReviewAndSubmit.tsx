@@ -416,7 +416,7 @@ const ReviewAndSubmit: React.FC<ReviewAndSubmitProps> = ({
 
             <div className="bg-amber-50 p-4 rounded-lg border border-amber-200 mt-6">
               <p className="text-amber-700 text-sm font-medium text-justify">
-                I understand that by merely submitting application form under management quota does not entitle/gurantee me the admission in Maharaja Surajmal Institute of Technology and if admission is granted then I hereby solemnly affirm and declare that I fulfill the eligibility conditions prescribed by the GGSIP University and my admission would be provisional and subject to final ratification by the GGSIPU on verification. I have also read the Admission Brochure of GGSIPU for 2025-2026 and understood allocation and reservation of seats and manner of admission. I have carefully read and verified the information furnished by my son/daughter/ward and affirm that it is true and correct and He/She fulfills the eligibility conditions as mentioned in the Admission Bulletin / Rules of GGSIPU.
+                I understand that by merely submitting application form under management quota does not entitle/gurantee me the admission in Maharaja Surajmal Institute of Technology and if admission is granted then I hereby solemnly affirm and declare that I fulfill the eligibility conditions prescribed by the GGSIP University and my admission would be provisional and subject to final ratification by the GGSIPU on verification. I have also read the Admission Brochure of GGSIPU for 2026-2027 and understood allocation and reservation of seats and manner of admission. I have carefully read and verified the information furnished by my son/daughter/ward and affirm that it is true and correct and He/She fulfills the eligibility conditions as mentioned in the Admission Bulletin / Rules of GGSIPU.
               </p>
             </div>
 
@@ -438,13 +438,13 @@ const ReviewAndSubmit: React.FC<ReviewAndSubmitProps> = ({
                 <li>Proof of Payment of registration / Processing Fee of RS 2500/- only.</li>
               </ol>
 
-              <p className="font-bold text-amber-700 text-sm space-y-1 pt-3">After submitting the form , kindly send the downloaded pdf copy of this form to <a className="text-amber-800 underline hover:text-amber-600" href="mailto:mqadmission2025-26@msit.in">mqadmission2025-26@msit.in</a> </p>
+              <p className="font-bold text-amber-700 text-sm space-y-1 pt-3">After submitting the form , kindly send the downloaded pdf copy of this form to <a className="text-amber-800 underline hover:text-amber-600" href="mailto:mqadmission2026-27@msit.in">mqadmission2026-27@msit.in</a> </p>
             </div>
 
             <div className="bg-amber-50 p-4 rounded-lg border border-amber-200 mt-6 text-justify">
               <h4 className="text-amber-800 font-semibold mb-2">Disclaimer</h4>
               <p className="text-amber-700 text-sm font-medium mt-3">
-                {`The admission process for the management seat in the institute is subject to permission from the Hon'ble High Court of Delhi to admit the students against the management seats in the institute. We shall not claim any right in the case institute is not permitted to conduct management quota counselling and admission for the session 2025-26 in the case institute is not getting permission for the same in Pending case LPA No. 466 of 2023 titled SURAJMAL MEMORIAL EDUCATION SOCIETY AND OTHERS and I am applying in the institute on our own risk.`}
+                {`The admission process for the management seat in the institute is subject to permission from the Hon'ble High Court of Delhi to admit the students against the management seats in the institute. We shall not claim any right in the case institute is not permitted to conduct management quota counselling and admission for the session 2026-27 in the case institute is not getting permission for the same in Pending case LPA No. 466 of 2023 titled SURAJMAL MEMORIAL EDUCATION SOCIETY AND OTHERS and I am applying in the institute on our own risk.`}
               </p>
 
               <div className="flex items-center align-middle space-x-2 mt-4">

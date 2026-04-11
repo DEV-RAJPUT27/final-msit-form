@@ -666,7 +666,7 @@ export default function AdmissionForm() {
             <CardDescription className="text-gray-100 text-center px-10">
               Application Form for admission under Management Quota Seats of GGSIPU, Delhi in
               <br />Maharaja Surajmal Institute of Technology, C-4, Janakpuri, New Delhi-110058
-              for the Academic Session 2025-2026
+              for the Academic Session 2026-2027
             </CardDescription>
             <div className="text-sm text-gray-100 text-center mt-2">{dateTime}</div>
           </CardHeader>
