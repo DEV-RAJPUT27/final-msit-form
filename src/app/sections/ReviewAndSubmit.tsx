@@ -438,7 +438,7 @@ const ReviewAndSubmit: React.FC<ReviewAndSubmitProps> = ({
                 <li>Proof of Payment of registration / Processing Fee of RS 2500/- only.</li>
               </ol>
 
-              <p className="font-bold text-amber-700 text-sm space-y-1 pt-3">After submitting the form , kindly send the downloaded pdf copy of this form to <a className="text-amber-800 underline hover:text-amber-600" href="mailto:mqadmission2026-27@msit.in">mqadmission2026-27@msit.in</a> </p>
+              <p className="font-bold text-amber-700 text-sm space-y-1 pt-3">After submitting the form , kindly send the downloaded pdf copy of this form to <a className="text-amber-800 underline hover:text-amber-600" href="mailto:mq_admissions_2026-27@msit.in">mq_admissions_2026-27@msit.in</a> </p>
             </div>
 
             <div className="bg-amber-50 p-4 rounded-lg border border-amber-200 mt-6 text-justify">
