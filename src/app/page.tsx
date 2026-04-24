@@ -20,6 +20,109 @@ import Loader from "@/app/loader"
 
 // import sample from "@/../sample.json"
 
+const defaultValues = {
+  programSelection: {
+    firstYearProgram: "CSE-1st Shift",
+    secondYearProgram: "LE to B.Tech CSE",
+    programmeName: "Bachelor of Technology (Computer Science & Engineering)",
+    programmeCode: "131",
+    preferredShift: "1st Shift",
+    registrationNumber: "GGSIPU2024001234",
+    registrationDate: "2024-06-01",
+    rollNumber: "1234567",
+    rank: "4521",
+  },
+  applicant: {
+    name: "RAHUL KUMAR SHARMA",
+    fatherName: "Rajesh Kumar Sharma",
+    motherName: "Sunita Sharma",
+    dob: "2005-08-15",
+    address: "H.No. 42, Sector 7, Rohini, New Delhi - 110085",
+    contact: "9876543210",
+    email: "rahul.sharma@gmail.com",
+    category: "General",
+    categoryCertificate: "https://drive.google.com/file/d/category-cert-link",
+    region: "Delhi Region",
+  },
+  tenth: {
+    board: "CBSE",
+    rollNumber: "1234567",
+    yearOfPassing: "2021",
+    subjects: {
+      subject1: { name: "English", marks: "92" },
+      subject2: { name: "Mathematics", marks: "95" },
+      subject3: { name: "Science", marks: "90" },
+      subject4: { name: "Social Science", marks: "88" },
+      subject5: { name: "Hindi", marks: "85" },
+      subject6: { name: "Computer Science", marks: "97" },
+    },
+    totalMarksObtained: "547",
+    maximumMarks: "600",
+    percentage: "91.17",
+    marksheetLink: "https://drive.google.com/file/d/10th-marksheet-link",
+  },
+  twelfth: {
+    board: "CBSE",
+    rollNumber: "7654321",
+    yearOfPassing: "2023",
+    subjects: {
+      subject1: { name: "English", marks: "88" },
+      subject2: { name: "Physics", marks: "92" },
+      subject3: { name: "Chemistry", marks: "89" },
+      subject4: { name: "Mathematics", marks: "95" },
+      subject5: { name: "Computer Science", marks: "98" },
+      subject6: { name: "Physical Education", marks: "90" },
+    },
+    pcmMarks: "276",
+    pcmPercentage: "92.00",
+    totalMarksObtained: "552",
+    maximumMarks: "600",
+    percentage: "92.00",
+    marksheetLink: "https://drive.google.com/file/d/12th-marksheet-link",
+  },
+  diploma: {
+    university: "Board of Technical Education, Delhi",
+    rollNumber: "DIP2021001",
+    firstYear: {
+      yearOfPassing: "2022",
+      subjects: "Applied Mathematics, Applied Physics, Applied Chemistry, Engineering Drawing, Workshop Practice",
+      maximumMarks: "600",
+      marksObtained: "520",
+      percentage: "86.67",
+    },
+    secondYear: {
+      subjects: "Data Structures, DBMS, Computer Networks, Operating Systems, Web Technology",
+      maximumMarks: "600",
+      marksObtained: "540",
+      percentage: "90.00",
+    },
+    thirdYear: {
+      subjects: "Software Engineering, Machine Learning, Cloud Computing, Project Work, Seminar",
+      maximumMarks: "600",
+      marksObtained: "555",
+      percentage: "92.50",
+    },
+    aggregate: {
+      maximumMarks: "1800",
+      marksObtained: "1615",
+      percentage: "89.72",
+    },
+    marksheetLink: "https://drive.google.com/file/d/diploma-marksheet-link",
+  },
+  documents: {
+    photoLink: "https://drive.google.com/file/d/passport-photo-link",
+    admitCardLink: "https://drive.google.com/file/d/admit-card-link",
+    ipuFormLink: "https://drive.google.com/file/d/ipu-form-link",
+    candidateSignatureLink: "https://drive.google.com/file/d/candidate-signature-link",
+    parentSignatureLink: "https://drive.google.com/file/d/parent-signature-link",
+    gapCertificateLink: "https://drive.google.com/file/d/gap-certificate-link",
+    aadharCardLink: "https://drive.google.com/file/d/aadhar-card-link",
+  },
+  payment: {
+    paymentProofLink: "https://drive.google.com/file/d/payment-proof-link",
+  },
+};
+
 export default function AdmissionForm() {
   const [dateTime, setDateTime] = useState("");
   const [activeTab, setActiveTab] = useState("program");
@@ -27,119 +130,7 @@ export default function AdmissionForm() {
 
   const [isLoading, setIsLoading] = useState(false);
 
-  const [formData, setFormData] = useState({
-    programSelection: {
-      firstYearProgram: "", // CSE-1st Shift, CSE-2nd Shift, etc.
-      secondYearProgram: "", // For LE to B.Tech
-      programmeName: "",
-      programmeCode: "",
-      preferredShift: "",
-      registrationNumber: "", // GGSIPU Online Application Form
-      registrationDate: "",
-      rollNumber: "", // NLT(JEE)/CET Roll No
-      rank: "", // NLT(JEE)/CET Rank
-    },
-
-    // Applicant Details fields
-    applicant: {
-      name: "", // Candidate's name in capital
-      fatherName: "",
-      motherName: "",
-      dob: "",
-      address: "", // Complete postal address with pin code
-      contact: "",
-      email: "",
-      category: "", // SC, ST, Defence, PWD, General
-      categoryCertificate: "", // Drive link for certificate
-      region: "", // Delhi Region or Outside Delhi
-    },
-
-    // Education Details - 10th
-    tenth: {
-      board: "",
-      rollNumber: "",
-      yearOfPassing: "",
-      subjects: {
-        subject1: { name: "", marks: "" },
-        subject2: { name: "", marks: "" },
-        subject3: { name: "", marks: "" },
-        subject4: { name: "", marks: "" },
-        subject5: { name: "", marks: "" },
-        subject6: { name: "", marks: "" },
-      },
-      totalMarksObtained: "",
-      maximumMarks: "",
-      percentage: "",
-      marksheetLink: "",
-    },
-
-    // Education Details - 12th
-    twelfth: {
-      board: "",
-      rollNumber: "",
-      yearOfPassing: "",
-      subjects: {
-        subject1: { name: "", marks: "" },
-        subject2: { name: "", marks: "" },
-        subject3: { name: "", marks: "" },
-        subject4: { name: "", marks: "" },
-        subject5: { name: "", marks: "" },
-        subject6: { name: "", marks: "" },
-      },
-      pcmMarks: "",
-      pcmPercentage: "",
-      totalMarksObtained: "",
-      maximumMarks: "",
-      percentage: "",
-      marksheetLink: "",
-    },
-
-    // Education Details - Diploma (For Lateral Entry)
-    diploma: {
-      university: "",
-      rollNumber: "",
-      firstYear: {
-        yearOfPassing: "",
-        subjects: "",
-        maximumMarks: "",
-        marksObtained: "",
-        percentage: "",
-      },
-      secondYear: {
-        subjects: "",
-        maximumMarks: "",
-        marksObtained: "",
-        percentage: "",
-      },
-      thirdYear: {
-        subjects: "",
-        maximumMarks: "",
-        marksObtained: "",
-        percentage: "",
-      },
-      aggregate: {
-        maximumMarks: "",
-        marksObtained: "",
-        percentage: "",
-      },
-      marksheetLink: "",
-    },
-
-    // Document Details
-    documents: {
-      photoLink: "",
-      admitCardLink: "",
-      ipuFormLink: "",
-      candidateSignatureLink: "",
-      parentSignatureLink: "",
-      gapCertificateLink: "",
-      aadharCardLink: "",
-    },
-
-    payment: {
-      paymentProofLink: "",
-    }
-  });
+  const [formData, setFormData] = useState(defaultValues);
 
   useEffect(() => {
     updateDateTime();
@@ -413,18 +404,18 @@ export default function AdmissionForm() {
         setIsLoading(true);
         const params = new URLSearchParams();
 
-        // Program Selection
-        params.append('entry.433309496', formData.programSelection.firstYearProgram);
+      // =============================
+      // PROGRAM SELECTION
+      // =============================
+      params.append('entry.433309496', formData.programSelection.firstYearProgram);
       params.append('entry.83785704', formData.programSelection.secondYearProgram);
       params.append('entry.1744013705', formData.programSelection.programmeName);
       params.append('entry.1978168265', formData.programSelection.preferredShift);
       params.append('entry.569038236', formData.programSelection.programmeCode);
       params.append('entry.644314276', formData.programSelection.registrationNumber);
 
-      // Registration Date (single field)
-      if (formData.programSelection.registrationDate) {
-        params.append('entry.30827969', formData.programSelection.registrationDate);
-      }
+      // Registration Date
+      params.append('entry.30827969', formData.programSelection.registrationDate);
 
       params.append('entry.963554904', formData.programSelection.rollNumber);
       params.append('entry.1707921178', formData.programSelection.rank);
@@ -432,97 +423,126 @@ export default function AdmissionForm() {
       // =============================
       // APPLICANT DETAILS
       // =============================
-      params.append('entry.1964670639', formData.applicant.name);
-
-      if (formData.applicant.dob) {
-        params.append('entry.139626426', formData.applicant.dob);
-      }
-
-      params.append('entry.791976098', formData.applicant.fatherName);
-      params.append('entry.989733864', formData.applicant.motherName);
-      params.append('entry.1148572364', formData.applicant.address);
-      params.append('entry.2084908874', formData.applicant.contact);
-      params.append('entry.784906392', formData.applicant.email);
-      params.append('entry.1481835549', formData.applicant.category);
-      params.append('entry.1593674183', formData.applicant.categoryCertificate);
-      params.append('entry.334708619', formData.applicant.region);
+      params.append('entry.1650035066', formData.applicant.name);           // ✅ was entry.1964670639
+      params.append('entry.139626426', formData.applicant.dob);
+      params.append('entry.1964670639', formData.applicant.fatherName);     // ✅ was entry.791976098
+      params.append('entry.2126656082', formData.applicant.motherName);     // ✅ was entry.989733864 (also typo fixed: "2126656082")
+      params.append('entry.791976098', formData.applicant.address);         // ✅ was entry.1148572364
+      params.append('entry.989733864', formData.applicant.contact);         // ✅ was entry.2084908874
+      params.append('entry.1148572364', formData.applicant.email);          // ✅ was entry.784906392
+      params.append('entry.2084908874', formData.applicant.category);       // ✅ was entry.1481835549
+      params.append('entry.784906392', formData.applicant.categoryCertificate); // ✅ was entry.1593674183
+      params.append('entry.1481835549', formData.applicant.region);         // ✅ was entry.334708619
 
       // =============================
       // 10th DETAILS
       // =============================
-      params.append('entry.2052037177', formData.tenth.board);
-      params.append('entry.1806255556', formData.tenth.rollNumber);
-      params.append('entry.1498488309', formData.tenth.yearOfPassing);
+      params.append('entry.1593674183', formData.tenth.board);              // ✅ was entry.2052037177
+      params.append('entry.334708619', formData.tenth.rollNumber);          // ✅ was entry.1806255556
+      params.append('entry.2052037177', formData.tenth.yearOfPassing);      // ✅ was entry.1498488309
 
-      params.append('entry.561755611', formData.tenth.subjects.subject1.name);
-      params.append('entry.1715097548', formData.tenth.subjects.subject1.marks);
+      params.append('entry.1806255556', formData.tenth.subjects.subject1.name);   // ✅
+      params.append('entry.1498488309', formData.tenth.subjects.subject1.marks);  // ✅
 
-      params.append('entry.610177237', formData.tenth.subjects.subject2.name);
-      params.append('entry.2045218598', formData.tenth.subjects.subject2.marks);
+      params.append('entry.561755611', formData.tenth.subjects.subject2.name);    // ✅
+      params.append('entry.1715097548', formData.tenth.subjects.subject2.marks);  // ✅
 
-      params.append('entry.935514256', formData.tenth.subjects.subject3.name);
-      params.append('entry.1280036078', formData.tenth.subjects.subject3.marks);
+      params.append('entry.610177237', formData.tenth.subjects.subject3.name);    // ✅
+      params.append('entry.2045218598', formData.tenth.subjects.subject3.marks);  // ✅
 
-      params.append('entry.1621925148', formData.tenth.subjects.subject4.name);
-      params.append('entry.1879435139', formData.tenth.subjects.subject4.marks);
+      params.append('entry.935514256', formData.tenth.subjects.subject4.name);    // ✅
+      params.append('entry.1280036078', formData.tenth.subjects.subject4.marks);  // ✅
 
-      params.append('entry.702125792', formData.tenth.subjects.subject5.name);
-      params.append('entry.1012298914', formData.tenth.subjects.subject5.marks);
+      params.append('entry.1621925148', formData.tenth.subjects.subject5.name);   // ✅
+      params.append('entry.1879435139', formData.tenth.subjects.subject5.marks);  // ✅
 
-      params.append('entry.197217640', formData.tenth.subjects.subject6.name);
-      params.append('entry.1339414118', formData.tenth.subjects.subject6.marks);
+      params.append('entry.702125792', formData.tenth.subjects.subject6.name);    // ✅
+      params.append('entry.1012298914', formData.tenth.subjects.subject6.marks);  // ✅
 
-      params.append('entry.653123080', formData.tenth.totalMarksObtained);
-      params.append('entry.2056899500', formData.tenth.maximumMarks);
-      params.append('entry.1065096890', formData.tenth.percentage);
-      params.append('entry.1007697033', formData.tenth.marksheetLink);
+      params.append('entry.197217640', formData.tenth.totalMarksObtained);  // ✅
+      params.append('entry.1339414118', formData.tenth.maximumMarks);        // ✅
+      params.append('entry.653123080', formData.tenth.percentage);           // ✅
+      params.append('entry.2056899500', formData.tenth.marksheetLink);       // ✅
 
       // =============================
       // 12th DETAILS
       // =============================
-      params.append('entry.42676692', formData.twelfth.board);
-      params.append('entry.796513284', formData.twelfth.rollNumber);
-      params.append('entry.994859345', formData.twelfth.yearOfPassing);
+      params.append('entry.1065096890', formData.twelfth.board);             // ✅ was entry.42676692
+      params.append('entry.1007697033', formData.twelfth.rollNumber);        // ✅ was entry.796513284
+      params.append('entry.42676692', formData.twelfth.yearOfPassing);       // ✅ was entry.994859345
 
-      params.append('entry.342954827', formData.twelfth.subjects.subject1.name);
-      params.append('entry.515890931', formData.twelfth.subjects.subject1.marks);
+      params.append('entry.796513284', formData.twelfth.subjects.subject1.name);   // ✅ was entry.342954827
+      params.append('entry.994859345', formData.twelfth.subjects.subject1.marks);  // ✅ was entry.515890931
 
-      params.append('entry.1480422984', formData.twelfth.subjects.subject2.name);
-      params.append('entry.403004829', formData.twelfth.subjects.subject2.marks);
+      params.append('entry.1996176681', formData.twelfth.subjects.subject2.name);  // ✅ was entry.1480422984
+      params.append('entry.2052762418', formData.twelfth.subjects.subject2.marks); // ✅ was entry.403004829
 
-      params.append('entry.1595554408', formData.twelfth.subjects.subject3.name);
-      params.append('entry.1157164933', formData.twelfth.subjects.subject3.marks);
+      params.append('entry.1990214421', formData.twelfth.subjects.subject3.name);  // ✅ was entry.1595554408
+      params.append('entry.1013969979', formData.twelfth.subjects.subject3.marks); // ✅ was entry.1157164933
 
-      params.append('entry.1247986183', formData.twelfth.subjects.subject4.name);
-      params.append('entry.2100744946', formData.twelfth.subjects.subject4.marks);
+      params.append('entry.655215561', formData.twelfth.subjects.subject4.name);   // ✅ was entry.1247986183
+      params.append('entry.110768795', formData.twelfth.subjects.subject4.marks);  // ✅ was entry.2100744946
 
-      params.append('entry.88728670', formData.twelfth.subjects.subject5.name);
-      params.append('entry.308997297', formData.twelfth.subjects.subject5.marks);
+      params.append('entry.1004321868', formData.twelfth.subjects.subject5.name);  // ✅ was entry.88728670
+      params.append('entry.1639426926', formData.twelfth.subjects.subject5.marks); // ✅ was entry.308997297
 
-      params.append('entry.512466623', formData.twelfth.subjects.subject6.name);
-      params.append('entry.30267842', formData.twelfth.subjects.subject6.marks);
+      params.append('entry.1829809835', formData.twelfth.subjects.subject6.name);  // ✅ was entry.512466623
+      params.append('entry.1602104861', formData.twelfth.subjects.subject6.marks); // ✅ was entry.30267842
 
-      params.append('entry.279798850', formData.twelfth.totalMarksObtained);
-      params.append('entry.2076733634', formData.twelfth.maximumMarks);
-      params.append('entry.2064834504', formData.twelfth.percentage);
-      params.append('entry.766698057', formData.twelfth.marksheetLink);
+      params.append('entry.2060150545', formData.twelfth.totalMarksObtained); // ✅ was entry.279798850
+      params.append('entry.342954827', formData.twelfth.maximumMarks);         // ✅ was entry.2076733634
+      params.append('entry.515890931', formData.twelfth.percentage);           // ✅ was entry.2064834504
+      params.append('entry.1480422984', formData.twelfth.marksheetLink);       // ✅ was entry.766698057
 
       // =============================
       // DIPLOMA DETAILS
       // =============================
-      params.append('entry.84406839', formData.diploma.university);
-      params.append('entry.223991078', formData.diploma.rollNumber);
+      params.append('entry.403004829', formData.diploma.university);           // ✅ was entry.84406839
+      params.append('entry.1595554408', formData.diploma.rollNumber);          // ✅ was entry.223991078
 
-      params.append('entry.360810194', formData.diploma.firstYear.subjects);
-      params.append('entry.1340368622', formData.diploma.firstYear.maximumMarks);
-      params.append('entry.872240053', formData.diploma.firstYear.marksObtained);
-      params.append('entry.1365305965', formData.diploma.firstYear.percentage);
+      params.append('entry.1157164933', formData.diploma.firstYear.subjects);      // ✅ was entry.360810194
+      params.append('entry.1247986183', formData.diploma.firstYear.maximumMarks);  // ✅ was entry.1340368622
+      params.append('entry.2100744946', formData.diploma.firstYear.marksObtained); // ✅ was entry.872240053
+      params.append('entry.88728670', formData.diploma.firstYear.percentage);      // ✅ was entry.1365305965
 
-      params.append('entry.1105852746', formData.diploma.secondYear.subjects);
-      params.append('entry.225100023', formData.diploma.secondYear.maximumMarks);
-      params.append('entry.1440484553', formData.diploma.secondYear.marksObtained);
-      params.append('entry.371585222', formData.diploma.secondYear.percentage);
+      params.append('entry.308997297', formData.diploma.secondYear.subjects);      // ✅ was entry.1105852746
+      params.append('entry.512466623', formData.diploma.secondYear.maximumMarks);  // ✅ was entry.225100023
+      params.append('entry.30267842', formData.diploma.secondYear.marksObtained);  // ✅ was entry.1440484553
+      params.append('entry.279798850', formData.diploma.secondYear.percentage);    // ✅ was entry.371585222
 
+            // =============================
+      // DIPLOMA - Third Year
+      // =============================
+      params.append('entry.2076733634', formData.diploma.thirdYear.subjects);
+      params.append('entry.2064834504', formData.diploma.thirdYear.maximumMarks);
+      params.append('entry.766698057', formData.diploma.thirdYear.marksObtained);
+      params.append('entry.84406839', formData.diploma.thirdYear.percentage);
+
+      // =============================
+      // DIPLOMA - Aggregate
+      // =============================
+      params.append('entry.223991078', formData.diploma.aggregate.maximumMarks);
+      params.append('entry.360810194', formData.diploma.aggregate.marksObtained);
+      params.append('entry.1340368622', formData.diploma.aggregate.percentage);
+
+      // =============================
+      // DIPLOMA - Marksheet
+      // =============================
+      params.append('entry.872240053', formData.diploma.marksheetLink);
+
+      // =============================
+      // DOCUMENTS
+      // =============================
+      params.append('entry.1365305965', formData.documents.photoLink);
+      params.append('entry.1105852746', formData.documents.admitCardLink);
+      params.append('entry.225100023', formData.documents.ipuFormLink);
+      params.append('entry.1440484553', formData.documents.candidateSignatureLink);
+      params.append('entry.371585222', formData.documents.parentSignatureLink);
+
+      // =============================
+      // PAYMENT
+      // =============================
+      // entry for gapCertificateLink, aadharCardLink, paymentProofLink not present in the URL snippet — please share those entry IDs
       // =============================
       // META
       // =============================
