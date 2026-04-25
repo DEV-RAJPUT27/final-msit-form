@@ -70,11 +70,6 @@ interface EducationDetailsProps {
         marksObtained: string;
         percentage: string;
       };
-      aggregate: {
-        maximumMarks: string;
-        marksObtained: string;
-        percentage: string;
-      };
       marksheetLink: string;
     };
   };
@@ -661,7 +656,7 @@ const EducationDetails: React.FC<EducationDetailsProps> = ({
             </div>
 
             {/* First Year */}
-            <div className="bg-gray-50 p-4 rounded-lg mb-4">
+            <div className="p-4 rounded-lg mb-4">
               <h4 className="font-medium mb-3">First Year</h4>
               <div className="grid grid-cols-2 gap-4 mb-4">
                 <div className="space-y-2">
@@ -722,7 +717,7 @@ const EducationDetails: React.FC<EducationDetailsProps> = ({
             </div>
 
             {/* Second Year */}
-            <div className="bg-gray-50 p-4 rounded-lg mb-4">
+            <div className="p-4 rounded-lg mb-4">
               <h4 className="font-medium mb-3">Second Year</h4>
               <div className="grid grid-cols-2 gap-4 mb-4">
                 <div className="space-y-2 md:col-span-2">
@@ -772,7 +767,7 @@ const EducationDetails: React.FC<EducationDetailsProps> = ({
             </div>
 
             {/* Third Year */}
-            <div className="bg-gray-50 p-4 rounded-lg mb-4">
+            <div className="p-4 rounded-lg mb-4">
               <h4 className="font-medium mb-3">Third Year</h4>
               <div className="grid grid-cols-2 gap-4 mb-4">
                 <div className="space-y-2 md:col-span-2">
@@ -816,46 +811,6 @@ const EducationDetails: React.FC<EducationDetailsProps> = ({
                     type="number"
                     value={formData.diploma.thirdYear.percentage}
                     onChange={(e) => handleNestedFormDataChange("diploma", "thirdYear", "percentage", e.target.value)}
-                  />
-                </div>
-              </div>
-            </div>
-
-            {/* Aggregate */}
-            <div className="bg-gray-100 p-4 rounded-lg mb-4">
-              <h4 className="font-medium mb-3">Aggregate (1st to 3rd year)</h4>
-              <div className="grid grid-cols-2 gap-4 mb-4">
-                <div className="space-y-2">
-                  <Label htmlFor="aggregate-max">Maximum Marks</Label>
-                  <Input
-                    id="aggregate-max"
-                    name="entry.diploma.aggregate.max"
-                    placeholder="Enter maximum marks"
-                    type="number"
-                    value={formData.diploma.aggregate.maximumMarks}
-                    onChange={(e) => handleNestedFormDataChange("diploma", "aggregate", "maximumMarks", e.target.value)}
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="aggregate-obtained">Marks Obtained</Label>
-                  <Input
-                    id="aggregate-obtained"
-                    name="entry.diploma.aggregate.obtained"
-                    placeholder="Enter marks obtained"
-                    type="number"
-                    value={formData.diploma.aggregate.marksObtained}
-                    onChange={(e) => handleNestedFormDataChange("diploma", "aggregate", "marksObtained", e.target.value)}
-                  />
-                </div>
-                <div className="space-y-2 md:col-span-2">
-                  <Label htmlFor="aggregate-percentage">Percentage of marks obtained out of Total marks</Label>
-                  <Input
-                    id="aggregate-percentage"
-                    name="entry.diploma.aggregate.percentage"
-                    placeholder="Enter percentage"
-                    type="number"
-                    value={formData.diploma.aggregate.percentage}
-                    onChange={(e) => handleNestedFormDataChange("diploma", "aggregate", "percentage", e.target.value)}
                   />
                 </div>
               </div>

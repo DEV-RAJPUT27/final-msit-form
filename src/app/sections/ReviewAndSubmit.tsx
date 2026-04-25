@@ -90,11 +90,6 @@ interface ReviewAndSubmitProps {
         marksObtained: string;
         percentage: string;
       };
-      aggregate: {
-        maximumMarks: string;
-        marksObtained: string;
-        percentage: string;
-      };
       marksheetLink: string;
     };
     documents: {
@@ -374,12 +369,6 @@ const ReviewAndSubmit: React.FC<ReviewAndSubmitProps> = ({
                       <p><strong>Subjects:</strong> {formData.diploma.thirdYear.subjects}</p>
                       <p><strong>Marks Obtained:</strong> {formData.diploma.thirdYear.marksObtained} / {formData.diploma.thirdYear.maximumMarks}</p>
                       <p><strong>Percentage:</strong> {formData.diploma.thirdYear.percentage}%</p>
-                    </div>
-
-                    <h5 className="font-medium mb-1 mt-3">Aggregate</h5>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
-                      <p className="self-end pb-5"><strong>Marks Obtained:</strong> {formData.diploma.aggregate.marksObtained} / {formData.diploma.aggregate.maximumMarks}</p>
-                      <p className="self-end pb-5"><strong>Percentage:</strong> {formData.diploma.aggregate.percentage}%</p>
                     </div>
 
                     <div>{renderDocument(formData.diploma.marksheetLink, "Diploma Marksheet of all semester examinations and Passing Certificate (for Lateral Entry)", true)}</div>
