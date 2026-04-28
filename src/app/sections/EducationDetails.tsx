@@ -661,7 +661,7 @@ const EducationDetails: React.FC<EducationDetailsProps> = ({
             </div>
 
             {/* First Year */}
-            <div className="bg-gray-50 p-4 rounded-lg mb-4">
+            <div className="p-4 rounded-lg mb-4">
               <h4 className="font-medium mb-3">First Year</h4>
               <div className="grid grid-cols-2 gap-4 mb-4">
                 <div className="space-y-2">
@@ -722,7 +722,7 @@ const EducationDetails: React.FC<EducationDetailsProps> = ({
             </div>
 
             {/* Second Year */}
-            <div className="bg-gray-50 p-4 rounded-lg mb-4">
+            <div className="p-4 rounded-lg mb-4">
               <h4 className="font-medium mb-3">Second Year</h4>
               <div className="grid grid-cols-2 gap-4 mb-4">
                 <div className="space-y-2 md:col-span-2">
@@ -772,7 +772,7 @@ const EducationDetails: React.FC<EducationDetailsProps> = ({
             </div>
 
             {/* Third Year */}
-            <div className="bg-gray-50 p-4 rounded-lg mb-4">
+            <div className="p-4 rounded-lg mb-4">
               <h4 className="font-medium mb-3">Third Year</h4>
               <div className="grid grid-cols-2 gap-4 mb-4">
                 <div className="space-y-2 md:col-span-2">
@@ -822,7 +822,7 @@ const EducationDetails: React.FC<EducationDetailsProps> = ({
             </div>
 
             {/* Aggregate */}
-            <div className="bg-gray-100 p-4 rounded-lg mb-4">
+            <div className="p-4 rounded-lg mb-4">
               <h4 className="font-medium mb-3">Aggregate (1st to 3rd year)</h4>
               <div className="grid grid-cols-2 gap-4 mb-4">
                 <div className="space-y-2">

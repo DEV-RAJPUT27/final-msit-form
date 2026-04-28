@@ -18,110 +18,7 @@ import ApplicantDetails from "./sections/ApplicantDetails"
 import ReviewAndSubmit from "./sections/ReviewAndSubmit"
 import Loader from "@/app/loader"
 
-// import sample from "@/../sample.json"
-
-const defaultValues = {
-  programSelection: {
-    firstYearProgram: "",
-    secondYearProgram: "",
-    programmeName: "",
-    programmeCode: "",
-    preferredShift: "",
-    registrationNumber: "",
-    registrationDate: "",
-    rollNumber: "",
-    rank: "",
-  },
-  applicant: {
-    name: "",
-    fatherName: "",
-    motherName: "",
-    dob: "",
-    address: "",
-    contact: "",
-    email: "",
-    category: "",
-    categoryCertificate: "",
-    region: "",
-  },
-  tenth: {
-    board: "",
-    rollNumber: "",
-    yearOfPassing: "",
-    subjects: {
-      subject1: { name: "", marks: "" },
-      subject2: { name: "", marks: "" },
-      subject3: { name: "", marks: "" },
-      subject4: { name: "", marks: "" },
-      subject5: { name: "", marks: "" },
-      subject6: { name: "", marks: "" },
-    },
-    totalMarksObtained: "",
-    maximumMarks: "",
-    percentage: "",
-    marksheetLink: "",
-  },
-  twelfth: {
-    board: "",
-    rollNumber: "",
-    yearOfPassing: "",
-    subjects: {
-      subject1: { name: "", marks: "" },
-      subject2: { name: "", marks: "" },
-      subject3: { name: "", marks: "" },
-      subject4: { name: "", marks: "" },
-      subject5: { name: "", marks: "" },
-      subject6: { name: "", marks: "" },
-    },
-    pcmMarks: "",
-    pcmPercentage: "",
-    totalMarksObtained: "",
-    maximumMarks: "",
-    percentage: "",
-    marksheetLink: "",
-  },
-  diploma: {
-    university: "",
-    rollNumber: "",
-    firstYear: {
-      yearOfPassing: "",
-      subjects: "",
-      maximumMarks: "",
-      marksObtained: "",
-      percentage: "",
-    },
-    secondYear: {
-      subjects: "",
-      maximumMarks: "",
-      marksObtained: "",
-      percentage: "",
-    },
-    thirdYear: {
-      subjects: "",
-      maximumMarks: "",
-      marksObtained: "",
-      percentage: "",
-    },
-    aggregate: {
-      maximumMarks: "",
-      marksObtained: "",
-      percentage: "",
-    },
-    marksheetLink: "",
-  },
-  documents: {
-    photoLink: "",
-    admitCardLink: "",
-    ipuFormLink: "",
-    candidateSignatureLink: "",
-    parentSignatureLink: "",
-    gapCertificateLink: "",
-    aadharCardLink: "",
-  },
-  payment: {
-    paymentProofLink: "",
-  },
-};
+import sample from "@/../sample.json"
 
 export default function AdmissionForm() {
   const [dateTime, setDateTime] = useState("");
@@ -130,7 +27,7 @@ export default function AdmissionForm() {
 
   const [isLoading, setIsLoading] = useState(false);
 
-  const [formData, setFormData] = useState(defaultValues);
+  const [formData, setFormData] = useState(sample);
 
   useEffect(() => {
     updateDateTime();
@@ -517,33 +414,27 @@ export default function AdmissionForm() {
       params.append('entry.2064834504', formData.diploma.thirdYear.maximumMarks);
       params.append('entry.766698057', formData.diploma.thirdYear.marksObtained);
       params.append('entry.84406839', formData.diploma.thirdYear.percentage);
-
-      // =============================
-      // DIPLOMA - Aggregate
-      // =============================
-      params.append('entry.223991078', formData.diploma.aggregate.maximumMarks);
-      params.append('entry.360810194', formData.diploma.aggregate.marksObtained);
-      params.append('entry.1340368622', formData.diploma.aggregate.percentage);
-
+      
       // =============================
       // DIPLOMA - Marksheet
       // =============================
-      params.append('entry.872240053', formData.diploma.marksheetLink);
+      params.append('entry.223991078', formData.diploma.marksheetLink);
 
       // =============================
       // DOCUMENTS
       // =============================
-      params.append('entry.1365305965', formData.documents.photoLink);
-      params.append('entry.1105852746', formData.documents.admitCardLink);
-      params.append('entry.225100023', formData.documents.ipuFormLink);
-      params.append('entry.1440484553', formData.documents.candidateSignatureLink);
-      params.append('entry.371585222', formData.documents.parentSignatureLink);
+      params.append('entry.360810194', formData.documents.photoLink);
+      params.append('entry.1340368622', formData.documents.admitCardLink);
+      params.append('entry.872240053', formData.documents.ipuFormLink);
+      params.append('entry.1365305965', formData.documents.candidateSignatureLink);
+      params.append('entry.1105852746', formData.documents.parentSignatureLink);
+      params.append('entry.225100023', formData.documents.gapCertificateLink);
+      params.append('entry.1440484553', formData.documents.aadharCardLink);
 
-      // =============================
-      // PAYMENT
-      // =============================
-      // entry for gapCertificateLink, aadharCardLink, paymentProofLink not present in the URL snippet — please share those entry IDs
-      // =============================
+
+      params.append('entry.371585222', formData.payment.paymentProofLink);
+      
+      // ===========
       // META
       // =============================
       params.append('fvv', '1');
