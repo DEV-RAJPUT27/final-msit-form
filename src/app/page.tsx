@@ -18,7 +18,7 @@ import ApplicantDetails from "./sections/ApplicantDetails"
 import ReviewAndSubmit from "./sections/ReviewAndSubmit"
 import Loader from "@/app/loader"
 
-import sample from "@/../sample.json"
+// import sample from "@/../sample.json"
 
 export default function AdmissionForm() {
   const [dateTime, setDateTime] = useState("");
@@ -27,7 +27,119 @@ export default function AdmissionForm() {
 
   const [isLoading, setIsLoading] = useState(false);
 
-  const [formData, setFormData] = useState(sample);
+  const [formData, setFormData] = useState({
+    programSelection: {
+      firstYearProgram: "", // CSE-1st Shift, CSE-2nd Shift, etc.
+      secondYearProgram: "", // For LE to B.Tech
+      programmeName: "",
+      programmeCode: "",
+      preferredShift: "",
+      registrationNumber: "", // GGSIPU Online Application Form
+      registrationDate: "",
+      rollNumber: "", // NLT(JEE)/CET Roll No
+      rank: "", // NLT(JEE)/CET Rank
+    },
+
+    // Applicant Details fields
+    applicant: {
+      name: "", // Candidate's name in capital
+      fatherName: "",
+      motherName: "",
+      dob: "",
+      address: "", // Complete postal address with pin code
+      contact: "",
+      email: "",
+      category: "", // SC, ST, Defence, PWD, General
+      categoryCertificate: "", // Drive link for certificate
+      region: "", // Delhi Region or Outside Delhi
+    },
+
+    // Education Details - 10th
+    tenth: {
+      board: "",
+      rollNumber: "",
+      yearOfPassing: "",
+      subjects: {
+        subject1: { name: "", marks: "" },
+        subject2: { name: "", marks: "" },
+        subject3: { name: "", marks: "" },
+        subject4: { name: "", marks: "" },
+        subject5: { name: "", marks: "" },
+        subject6: { name: "", marks: "" },
+      },
+      totalMarksObtained: "",
+      maximumMarks: "",
+      percentage: "",
+      marksheetLink: "",
+    },
+
+    // Education Details - 12th
+    twelfth: {
+      board: "",
+      rollNumber: "",
+      yearOfPassing: "",
+      subjects: {
+        subject1: { name: "", marks: "" },
+        subject2: { name: "", marks: "" },
+        subject3: { name: "", marks: "" },
+        subject4: { name: "", marks: "" },
+        subject5: { name: "", marks: "" },
+        subject6: { name: "", marks: "" },
+      },
+      pcmMarks: "",
+      pcmPercentage: "",
+      totalMarksObtained: "",
+      maximumMarks: "",
+      percentage: "",
+      marksheetLink: "",
+    },
+
+    // Education Details - Diploma (For Lateral Entry)
+    diploma: {
+      university: "",
+      rollNumber: "",
+      firstYear: {
+        yearOfPassing: "",
+        subjects: "",
+        maximumMarks: "",
+        marksObtained: "",
+        percentage: "",
+      },
+      secondYear: {
+        subjects: "",
+        maximumMarks: "",
+        marksObtained: "",
+        percentage: "",
+      },
+      thirdYear: {
+        subjects: "",
+        maximumMarks: "",
+        marksObtained: "",
+        percentage: "",
+      },
+      aggregate: {
+        maximumMarks: "",
+        marksObtained: "",
+        percentage: "",
+      },
+      marksheetLink: "",
+    },
+
+    // Document Details
+    documents: {
+      photoLink: "",
+      admitCardLink: "",
+      ipuFormLink: "",
+      candidateSignatureLink: "",
+      parentSignatureLink: "",
+      gapCertificateLink: "",
+      aadharCardLink: "",
+    },
+
+    payment: {
+      paymentProofLink: "",
+    }
+  });
 
   useEffect(() => {
     updateDateTime();
