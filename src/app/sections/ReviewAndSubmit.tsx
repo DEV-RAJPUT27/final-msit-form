@@ -1,11 +1,10 @@
-import React, { useState } from "react"; // Add useState import
+import React from "react"; // Add useState import
 import { TabsContent } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { ChevronLeft, ExternalLink, Send } from "lucide-react";
 import Image from "next/image";
-import { Checkbox } from "@/components/ui/checkbox"; // Add Checkbox import
 
 interface ReviewAndSubmitProps {
   formData: {
@@ -119,8 +118,6 @@ const ReviewAndSubmit: React.FC<ReviewAndSubmitProps> = ({
   prevTab,
   handleSubmit
 }) => {
-  // Add state for tracking checkbox
-  const [agreedToTerms, setAgreedToTerms] = useState(false);
 
   const formatDate = (dateString: string) => {
     if (!dateString) return "";
@@ -440,28 +437,6 @@ const ReviewAndSubmit: React.FC<ReviewAndSubmitProps> = ({
 
               <p className="font-bold text-amber-700 text-sm space-y-1 pt-3">After submitting the form , kindly send the downloaded pdf copy of this form to <a className="text-amber-800 underline hover:text-amber-600" href="mailto:mq_admissions_2026-27@msit.in">mq_admissions_2026-27@msit.in</a> </p>
             </div>
-
-            <div className="bg-amber-50 p-4 rounded-lg border border-amber-200 mt-6 text-justify">
-              <h4 className="text-amber-800 font-semibold mb-2">Disclaimer</h4>
-              <p className="text-amber-700 text-sm font-medium mt-3">
-                {`The admission process for the management seat in the institute is subject to permission from the Hon'ble High Court of Delhi to admit the students against the management seats in the institute. We shall not claim any right in the case institute is not permitted to conduct management quota counselling and admission for the session 2026-27 in the case institute is not getting permission for the same in Pending case LPA No. 466 of 2023 titled SURAJMAL MEMORIAL EDUCATION SOCIETY AND OTHERS and I am applying in the institute on our own risk.`}
-              </p>
-
-              <div className="flex items-center align-middle space-x-2 mt-4">
-                <Checkbox
-                  id="terms"
-                  checked={agreedToTerms}
-                  onCheckedChange={(checked) => setAgreedToTerms(checked === true)}
-                  className="mt-1 self-center"
-                />
-                <label
-                  htmlFor="terms"
-                  className="text-amber-800 text-sm cursor-pointer self-center font-medium"
-                >
-                  I have read and agree to all terms highlighted above
-                </label>
-              </div>
-            </div>
           </div>
         </CardContent>
         <CardFooter className="flex flex-col sm:flex-row gap-4 justify-between">
@@ -473,7 +448,6 @@ const ReviewAndSubmit: React.FC<ReviewAndSubmitProps> = ({
               type="button"
               onClick={handleSubmit}
               className="bg-green-600 hover:bg-green-700 flex items-center gap-2 w-full sm:w-auto cursor-pointer"
-              disabled={!agreedToTerms}
             >
               <Send className="h-4 w-4" /> Submit Application
             </Button>
