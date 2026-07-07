@@ -9,16 +9,17 @@ import html2canvas from "html2canvas-pro"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
-import { School, User, BookOpen, FileText, CreditCard } from "lucide-react"
+import { School, User, BookOpen, FileText, CreditCard, Send } from "lucide-react"
 import ProgramSelection from "./sections/ProgramSelection"
 import EducationDetails from "./sections/EducationDetails"
-import DocumentDetails from "./sections/DocumentDetails"
+// import DocumentDetails from "./sections/DocumentDetails"
 import PaymentDetails from "./sections/PaymentDetails"
 import ApplicantDetails from "./sections/ApplicantDetails"
 import ReviewAndSubmit from "./sections/ReviewAndSubmit"
+import FinalSubmission from "./sections/FinalSubmission"
 import Loader from "@/app/loader"
 
-// import sample from "@/../sample.json"
+import sample from "@/../sample.json"
 
 export default function AdmissionForm() {
   const [dateTime, setDateTime] = useState("");
@@ -27,119 +28,120 @@ export default function AdmissionForm() {
 
   const [isLoading, setIsLoading] = useState(false);
 
-  const [formData, setFormData] = useState({
-    programSelection: {
-      firstYearProgram: "", // CSE-1st Shift, CSE-2nd Shift, etc.
-      secondYearProgram: "", // For LE to B.Tech
-      programmeName: "",
-      programmeCode: "",
-      preferredShift: "",
-      registrationNumber: "", // GGSIPU Online Application Form
-      registrationDate: "",
-      rollNumber: "", // NLT(JEE)/CET Roll No
-      rank: "", // NLT(JEE)/CET Rank
-    },
+  const [formData, setFormData] = useState(sample)
+  // const [formData, setFormData] = useState({
+  //   programSelection: {
+  //     firstYearProgram: "", // CSE-1st Shift, CSE-2nd Shift, etc.
+  //     secondYearProgram: "", // For LE to B.Tech
+  //     programmeName: "",
+  //     programmeCode: "",
+  //     preferredShift: "",
+  //     registrationNumber: "", // GGSIPU Online Application Form
+  //     registrationDate: "",
+  //     rollNumber: "", // NLT(JEE)/CET Roll No
+  //     rank: "", // NLT(JEE)/CET Rank
+  //   },
 
-    // Applicant Details fields
-    applicant: {
-      name: "", // Candidate's name in capital
-      fatherName: "",
-      motherName: "",
-      dob: "",
-      address: "", // Complete postal address with pin code
-      contact: "",
-      email: "",
-      category: "", // SC, ST, Defence, PWD, General
-      categoryCertificate: "", // Drive link for certificate
-      region: "", // Delhi Region or Outside Delhi
-    },
+  //   // Applicant Details fields
+  //   applicant: {
+  //     name: "", // Candidate's name in capital
+  //     fatherName: "",
+  //     motherName: "",
+  //     dob: "",
+  //     address: "", // Complete postal address with pin code
+  //     contact: "",
+  //     email: "",
+  //     category: "", // SC, ST, Defence, PWD, General
+  //     categoryCertificate: "", // Drive link for certificate
+  //     region: "", // Delhi Region or Outside Delhi
+  //   },
 
-    // Education Details - 10th
-    tenth: {
-      board: "",
-      rollNumber: "",
-      yearOfPassing: "",
-      subjects: {
-        subject1: { name: "", marks: "" },
-        subject2: { name: "", marks: "" },
-        subject3: { name: "", marks: "" },
-        subject4: { name: "", marks: "" },
-        subject5: { name: "", marks: "" },
-        subject6: { name: "", marks: "" },
-      },
-      totalMarksObtained: "",
-      maximumMarks: "",
-      percentage: "",
-      marksheetLink: "",
-    },
+  //   // Education Details - 10th
+  //   tenth: {
+  //     board: "",
+  //     rollNumber: "",
+  //     yearOfPassing: "",
+  //     subjects: {
+  //       subject1: { name: "", marks: "" },
+  //       subject2: { name: "", marks: "" },
+  //       subject3: { name: "", marks: "" },
+  //       subject4: { name: "", marks: "" },
+  //       subject5: { name: "", marks: "" },
+  //       subject6: { name: "", marks: "" },
+  //     },
+  //     totalMarksObtained: "",
+  //     maximumMarks: "",
+  //     percentage: "",
+  //     marksheetLink: "",
+  //   },
 
-    // Education Details - 12th
-    twelfth: {
-      board: "",
-      rollNumber: "",
-      yearOfPassing: "",
-      subjects: {
-        subject1: { name: "", marks: "" },
-        subject2: { name: "", marks: "" },
-        subject3: { name: "", marks: "" },
-        subject4: { name: "", marks: "" },
-        subject5: { name: "", marks: "" },
-        subject6: { name: "", marks: "" },
-      },
-      pcmMarks: "",
-      pcmPercentage: "",
-      totalMarksObtained: "",
-      maximumMarks: "",
-      percentage: "",
-      marksheetLink: "",
-    },
+  //   // Education Details - 12th
+  //   twelfth: {
+  //     board: "",
+  //     rollNumber: "",
+  //     yearOfPassing: "",
+  //     subjects: {
+  //       subject1: { name: "", marks: "" },
+  //       subject2: { name: "", marks: "" },
+  //       subject3: { name: "", marks: "" },
+  //       subject4: { name: "", marks: "" },
+  //       subject5: { name: "", marks: "" },
+  //       subject6: { name: "", marks: "" },
+  //     },
+  //     pcmMarks: "",
+  //     pcmPercentage: "",
+  //     totalMarksObtained: "",
+  //     maximumMarks: "",
+  //     percentage: "",
+  //     marksheetLink: "",
+  //   },
 
-    // Education Details - Diploma (For Lateral Entry)
-    diploma: {
-      university: "",
-      rollNumber: "",
-      firstYear: {
-        yearOfPassing: "",
-        subjects: "",
-        maximumMarks: "",
-        marksObtained: "",
-        percentage: "",
-      },
-      secondYear: {
-        subjects: "",
-        maximumMarks: "",
-        marksObtained: "",
-        percentage: "",
-      },
-      thirdYear: {
-        subjects: "",
-        maximumMarks: "",
-        marksObtained: "",
-        percentage: "",
-      },
-      aggregate: {
-        maximumMarks: "",
-        marksObtained: "",
-        percentage: "",
-      },
-      marksheetLink: "",
-    },
+  //   // Education Details - Diploma (For Lateral Entry)
+  //   diploma: {
+  //     university: "",
+  //     rollNumber: "",
+  //     firstYear: {
+  //       yearOfPassing: "",
+  //       subjects: "",
+  //       maximumMarks: "",
+  //       marksObtained: "",
+  //       percentage: "",
+  //     },
+  //     secondYear: {
+  //       subjects: "",
+  //       maximumMarks: "",
+  //       marksObtained: "",
+  //       percentage: "",
+  //     },
+  //     thirdYear: {
+  //       subjects: "",
+  //       maximumMarks: "",
+  //       marksObtained: "",
+  //       percentage: "",
+  //     },
+  //     aggregate: {
+  //       maximumMarks: "",
+  //       marksObtained: "",
+  //       percentage: "",
+  //     },
+  //     marksheetLink: "",
+  //   },
 
-    // Document Details
-    documents: {
-      photoLink: "",
-      admitCardLink: "",
-      ipuFormLink: "",
-      candidateSignatureLink: "",
-      parentSignatureLink: "",
-      gapCertificateLink: "",
-      aadharCardLink: "",
-    },
+  //   // Document Details
+  //   // documents: {
+  //   //   photoLink: "",
+  //   //   admitCardLink: "",
+  //   //   ipuFormLink: "",
+  //   //   candidateSignatureLink: "",
+  //   //   parentSignatureLink: "",
+  //   //   gapCertificateLink: "",
+  //   //   aadharCardLink: "",
+  //   // },
 
-    payment: {
-      paymentProofLink: "",
-    }
-  });
+  //   payment: {
+  //     paymentProofLink: "",
+  //   }
+  // });
 
   useEffect(() => {
     updateDateTime();
@@ -149,14 +151,15 @@ export default function AdmissionForm() {
   useEffect(() => {
     // Update progress based on active tab
     const progressMap: Record<string, number> = {
-      program: 20,
-      personal: 40,
-      education: 60,
-      documents: 80,
-      payment: 90,
-      review: 100,
+      program: 15,
+      personal: 30,
+      education: 45,
+      documents: 60,
+      payment: 75,
+      review: 90,
+      submission: 100,
     }
-    setProgress(progressMap[activeTab] || 20)
+    setProgress(progressMap[activeTab] || 15)
   }, [activeTab])
 
   const updateDateTime = () => {
@@ -173,7 +176,6 @@ export default function AdmissionForm() {
       tenth: "education",
       twelfth: "education",
       diploma: "education",
-      documents: "documents",
       payment: "payment"
     };
 
@@ -262,7 +264,7 @@ export default function AdmissionForm() {
     return true;
   };
 
-  const savePdf = async () => {
+  const savePdf = async (redirectAfterDownload = true) => {
     if (!checkForm()) {
       return;
     }
@@ -381,10 +383,12 @@ export default function AdmissionForm() {
 
       pdf.save("MSIT_MANAGEMENT_Application_Form.pdf");
 
-      setTimeout(() => {
-        localStorage.setItem("isformSubmitted", "true");
-        window.open("/confirmation", "_self");
-      }, 100);
+      if (redirectAfterDownload) {
+        setTimeout(() => {
+          localStorage.setItem("isformSubmitted", "true");
+          window.open("/confirmation", "_self");
+        }, 100);
+      }
 
     } catch (error) {
       console.error("Error generating PDF:", error);
@@ -413,145 +417,145 @@ export default function AdmissionForm() {
         setIsLoading(true);
         const params = new URLSearchParams();
 
-      // =============================
-      // PROGRAM SELECTION
-      // =============================
-      params.append('entry.433309496', formData.programSelection.firstYearProgram);
-      params.append('entry.83785704', formData.programSelection.secondYearProgram);
-      params.append('entry.1744013705', formData.programSelection.programmeName);
-      params.append('entry.1978168265', formData.programSelection.preferredShift);
-      params.append('entry.569038236', formData.programSelection.programmeCode);
-      params.append('entry.644314276', formData.programSelection.registrationNumber);
+        // =============================
+        // PROGRAM SELECTION
+        // =============================
+        params.append('entry.433309496', formData.programSelection.firstYearProgram);
+        params.append('entry.83785704', formData.programSelection.secondYearProgram);
+        params.append('entry.1744013705', formData.programSelection.programmeName);
+        params.append('entry.1978168265', formData.programSelection.preferredShift);
+        params.append('entry.569038236', formData.programSelection.programmeCode);
+        params.append('entry.644314276', formData.programSelection.registrationNumber);
 
-      // Registration Date
-      params.append('entry.30827969', formData.programSelection.registrationDate);
+        // Registration Date
+        params.append('entry.30827969', formData.programSelection.registrationDate);
 
-      params.append('entry.963554904', formData.programSelection.rollNumber);
-      params.append('entry.1707921178', formData.programSelection.rank);
+        params.append('entry.963554904', formData.programSelection.rollNumber);
+        params.append('entry.1707921178', formData.programSelection.rank);
 
-      // =============================
-      // APPLICANT DETAILS
-      // =============================
-      params.append('entry.1650035066', formData.applicant.name);           // ✅ was entry.1964670639
-      params.append('entry.139626426', formData.applicant.dob);
-      params.append('entry.1964670639', formData.applicant.fatherName);     // ✅ was entry.791976098
-      params.append('entry.2126656082', formData.applicant.motherName);     // ✅ was entry.989733864 (also typo fixed: "2126656082")
-      params.append('entry.791976098', formData.applicant.address);         // ✅ was entry.1148572364
-      params.append('entry.989733864', formData.applicant.contact);         // ✅ was entry.2084908874
-      params.append('entry.1148572364', formData.applicant.email);          // ✅ was entry.784906392
-      params.append('entry.2084908874', formData.applicant.category);       // ✅ was entry.1481835549
-      params.append('entry.784906392', formData.applicant.categoryCertificate); // ✅ was entry.1593674183
-      params.append('entry.1481835549', formData.applicant.region);         // ✅ was entry.334708619
+        // =============================
+        // APPLICANT DETAILS
+        // =============================
+        params.append('entry.1650035066', formData.applicant.name);           // ✅ was entry.1964670639
+        params.append('entry.139626426', formData.applicant.dob);
+        params.append('entry.1964670639', formData.applicant.fatherName);     // ✅ was entry.791976098
+        params.append('entry.2126656082', formData.applicant.motherName);     // ✅ was entry.989733864 (also typo fixed: "2126656082")
+        params.append('entry.791976098', formData.applicant.address);         // ✅ was entry.1148572364
+        params.append('entry.989733864', formData.applicant.contact);         // ✅ was entry.2084908874
+        params.append('entry.1148572364', formData.applicant.email);          // ✅ was entry.784906392
+        params.append('entry.2084908874', formData.applicant.category);       // ✅ was entry.1481835549
+        params.append('entry.784906392', formData.applicant.categoryCertificate); // ✅ was entry.1593674183
+        params.append('entry.1481835549', formData.applicant.region);         // ✅ was entry.334708619
 
-      // =============================
-      // 10th DETAILS
-      // =============================
-      params.append('entry.1593674183', formData.tenth.board);              // ✅ was entry.2052037177
-      params.append('entry.334708619', formData.tenth.rollNumber);          // ✅ was entry.1806255556
-      params.append('entry.2052037177', formData.tenth.yearOfPassing);      // ✅ was entry.1498488309
+        // =============================
+        // 10th DETAILS
+        // =============================
+        params.append('entry.1593674183', formData.tenth.board);              // ✅ was entry.2052037177
+        params.append('entry.334708619', formData.tenth.rollNumber);          // ✅ was entry.1806255556
+        params.append('entry.2052037177', formData.tenth.yearOfPassing);      // ✅ was entry.1498488309
 
-      params.append('entry.1806255556', formData.tenth.subjects.subject1.name);   // ✅
-      params.append('entry.1498488309', formData.tenth.subjects.subject1.marks);  // ✅
+        params.append('entry.1806255556', formData.tenth.subjects.subject1.name);   // ✅
+        params.append('entry.1498488309', formData.tenth.subjects.subject1.marks);  // ✅
 
-      params.append('entry.561755611', formData.tenth.subjects.subject2.name);    // ✅
-      params.append('entry.1715097548', formData.tenth.subjects.subject2.marks);  // ✅
+        params.append('entry.561755611', formData.tenth.subjects.subject2.name);    // ✅
+        params.append('entry.1715097548', formData.tenth.subjects.subject2.marks);  // ✅
 
-      params.append('entry.610177237', formData.tenth.subjects.subject3.name);    // ✅
-      params.append('entry.2045218598', formData.tenth.subjects.subject3.marks);  // ✅
+        params.append('entry.610177237', formData.tenth.subjects.subject3.name);    // ✅
+        params.append('entry.2045218598', formData.tenth.subjects.subject3.marks);  // ✅
 
-      params.append('entry.935514256', formData.tenth.subjects.subject4.name);    // ✅
-      params.append('entry.1280036078', formData.tenth.subjects.subject4.marks);  // ✅
+        params.append('entry.935514256', formData.tenth.subjects.subject4.name);    // ✅
+        params.append('entry.1280036078', formData.tenth.subjects.subject4.marks);  // ✅
 
-      params.append('entry.1621925148', formData.tenth.subjects.subject5.name);   // ✅
-      params.append('entry.1879435139', formData.tenth.subjects.subject5.marks);  // ✅
+        params.append('entry.1621925148', formData.tenth.subjects.subject5.name);   // ✅
+        params.append('entry.1879435139', formData.tenth.subjects.subject5.marks);  // ✅
 
-      params.append('entry.702125792', formData.tenth.subjects.subject6.name);    // ✅
-      params.append('entry.1012298914', formData.tenth.subjects.subject6.marks);  // ✅
+        params.append('entry.702125792', formData.tenth.subjects.subject6.name);    // ✅
+        params.append('entry.1012298914', formData.tenth.subjects.subject6.marks);  // ✅
 
-      params.append('entry.197217640', formData.tenth.totalMarksObtained);  // ✅
-      params.append('entry.1339414118', formData.tenth.maximumMarks);        // ✅
-      params.append('entry.653123080', formData.tenth.percentage);           // ✅
-      params.append('entry.2056899500', formData.tenth.marksheetLink);       // ✅
+        params.append('entry.197217640', formData.tenth.totalMarksObtained);  // ✅
+        params.append('entry.1339414118', formData.tenth.maximumMarks);        // ✅
+        params.append('entry.653123080', formData.tenth.percentage);           // ✅
+        // params.append('entry.2056899500', formData.tenth.marksheetLink);       // ✅
 
-      // =============================
-      // 12th DETAILS
-      // =============================
-      params.append('entry.1065096890', formData.twelfth.board);             // ✅ was entry.42676692
-      params.append('entry.1007697033', formData.twelfth.rollNumber);        // ✅ was entry.796513284
-      params.append('entry.42676692', formData.twelfth.yearOfPassing);       // ✅ was entry.994859345
+        // =============================
+        // 12th DETAILS
+        // =============================
+        params.append('entry.1065096890', formData.twelfth.board);             // ✅ was entry.42676692
+        params.append('entry.1007697033', formData.twelfth.rollNumber);        // ✅ was entry.796513284
+        params.append('entry.42676692', formData.twelfth.yearOfPassing);       // ✅ was entry.994859345
 
-      params.append('entry.796513284', formData.twelfth.subjects.subject1.name);   // ✅ was entry.342954827
-      params.append('entry.994859345', formData.twelfth.subjects.subject1.marks);  // ✅ was entry.515890931
+        params.append('entry.796513284', formData.twelfth.subjects.subject1.name);   // ✅ was entry.342954827
+        params.append('entry.994859345', formData.twelfth.subjects.subject1.marks);  // ✅ was entry.515890931
 
-      params.append('entry.1996176681', formData.twelfth.subjects.subject2.name);  // ✅ was entry.1480422984
-      params.append('entry.2052762418', formData.twelfth.subjects.subject2.marks); // ✅ was entry.403004829
+        params.append('entry.1996176681', formData.twelfth.subjects.subject2.name);  // ✅ was entry.1480422984
+        params.append('entry.2052762418', formData.twelfth.subjects.subject2.marks); // ✅ was entry.403004829
 
-      params.append('entry.1990214421', formData.twelfth.subjects.subject3.name);  // ✅ was entry.1595554408
-      params.append('entry.1013969979', formData.twelfth.subjects.subject3.marks); // ✅ was entry.1157164933
+        params.append('entry.1990214421', formData.twelfth.subjects.subject3.name);  // ✅ was entry.1595554408
+        params.append('entry.1013969979', formData.twelfth.subjects.subject3.marks); // ✅ was entry.1157164933
 
-      params.append('entry.655215561', formData.twelfth.subjects.subject4.name);   // ✅ was entry.1247986183
-      params.append('entry.110768795', formData.twelfth.subjects.subject4.marks);  // ✅ was entry.2100744946
+        params.append('entry.655215561', formData.twelfth.subjects.subject4.name);   // ✅ was entry.1247986183
+        params.append('entry.110768795', formData.twelfth.subjects.subject4.marks);  // ✅ was entry.2100744946
 
-      params.append('entry.1004321868', formData.twelfth.subjects.subject5.name);  // ✅ was entry.88728670
-      params.append('entry.1639426926', formData.twelfth.subjects.subject5.marks); // ✅ was entry.308997297
+        params.append('entry.1004321868', formData.twelfth.subjects.subject5.name);  // ✅ was entry.88728670
+        params.append('entry.1639426926', formData.twelfth.subjects.subject5.marks); // ✅ was entry.308997297
 
-      params.append('entry.1829809835', formData.twelfth.subjects.subject6.name);  // ✅ was entry.512466623
-      params.append('entry.1602104861', formData.twelfth.subjects.subject6.marks); // ✅ was entry.30267842
+        params.append('entry.1829809835', formData.twelfth.subjects.subject6.name);  // ✅ was entry.512466623
+        params.append('entry.1602104861', formData.twelfth.subjects.subject6.marks); // ✅ was entry.30267842
 
-      params.append('entry.2060150545', formData.twelfth.totalMarksObtained); // ✅ was entry.279798850
-      params.append('entry.342954827', formData.twelfth.maximumMarks);         // ✅ was entry.2076733634
-      params.append('entry.515890931', formData.twelfth.percentage);           // ✅ was entry.2064834504
-      params.append('entry.1480422984', formData.twelfth.marksheetLink);       // ✅ was entry.766698057
+        params.append('entry.2060150545', formData.twelfth.totalMarksObtained); // ✅ was entry.279798850
+        params.append('entry.342954827', formData.twelfth.maximumMarks);         // ✅ was entry.2076733634
+        params.append('entry.515890931', formData.twelfth.percentage);           // ✅ was entry.2064834504
+        // params.append('entry.1480422984', formData.twelfth.marksheetLink);       // ✅ was entry.766698057
 
-      // =============================
-      // DIPLOMA DETAILS
-      // =============================
-      params.append('entry.403004829', formData.diploma.university);           // ✅ was entry.84406839
-      params.append('entry.1595554408', formData.diploma.rollNumber);          // ✅ was entry.223991078
+        // =============================
+        // DIPLOMA DETAILS
+        // =============================
+        params.append('entry.403004829', formData.diploma.university);           // ✅ was entry.84406839
+        params.append('entry.1595554408', formData.diploma.rollNumber);          // ✅ was entry.223991078
 
-      params.append('entry.1157164933', formData.diploma.firstYear.subjects);      // ✅ was entry.360810194
-      params.append('entry.1247986183', formData.diploma.firstYear.maximumMarks);  // ✅ was entry.1340368622
-      params.append('entry.2100744946', formData.diploma.firstYear.marksObtained); // ✅ was entry.872240053
-      params.append('entry.88728670', formData.diploma.firstYear.percentage);      // ✅ was entry.1365305965
+        params.append('entry.1157164933', formData.diploma.firstYear.subjects);      // ✅ was entry.360810194
+        params.append('entry.1247986183', formData.diploma.firstYear.maximumMarks);  // ✅ was entry.1340368622
+        params.append('entry.2100744946', formData.diploma.firstYear.marksObtained); // ✅ was entry.872240053
+        params.append('entry.88728670', formData.diploma.firstYear.percentage);      // ✅ was entry.1365305965
 
-      params.append('entry.308997297', formData.diploma.secondYear.subjects);      // ✅ was entry.1105852746
-      params.append('entry.512466623', formData.diploma.secondYear.maximumMarks);  // ✅ was entry.225100023
-      params.append('entry.30267842', formData.diploma.secondYear.marksObtained);  // ✅ was entry.1440484553
-      params.append('entry.279798850', formData.diploma.secondYear.percentage);    // ✅ was entry.371585222
+        params.append('entry.308997297', formData.diploma.secondYear.subjects);      // ✅ was entry.1105852746
+        params.append('entry.512466623', formData.diploma.secondYear.maximumMarks);  // ✅ was entry.225100023
+        params.append('entry.30267842', formData.diploma.secondYear.marksObtained);  // ✅ was entry.1440484553
+        params.append('entry.279798850', formData.diploma.secondYear.percentage);    // ✅ was entry.371585222
 
-            // =============================
-      // DIPLOMA - Third Year
-      // =============================
-      params.append('entry.2076733634', formData.diploma.thirdYear.subjects);
-      params.append('entry.2064834504', formData.diploma.thirdYear.maximumMarks);
-      params.append('entry.766698057', formData.diploma.thirdYear.marksObtained);
-      params.append('entry.84406839', formData.diploma.thirdYear.percentage);
-      
-      // =============================
-      // DIPLOMA - Marksheet
-      // =============================
-      params.append('entry.223991078', formData.diploma.marksheetLink);
+        // =============================
+        // DIPLOMA - Third Year
+        // =============================
+        params.append('entry.2076733634', formData.diploma.thirdYear.subjects);
+        params.append('entry.2064834504', formData.diploma.thirdYear.maximumMarks);
+        params.append('entry.766698057', formData.diploma.thirdYear.marksObtained);
+        params.append('entry.84406839', formData.diploma.thirdYear.percentage);
 
-      // =============================
-      // DOCUMENTS
-      // =============================
-      params.append('entry.360810194', formData.documents.photoLink);
-      params.append('entry.1340368622', formData.documents.admitCardLink);
-      params.append('entry.872240053', formData.documents.ipuFormLink);
-      params.append('entry.1365305965', formData.documents.candidateSignatureLink);
-      params.append('entry.1105852746', formData.documents.parentSignatureLink);
-      params.append('entry.225100023', formData.documents.gapCertificateLink);
-      params.append('entry.1440484553', formData.documents.aadharCardLink);
+        // =============================
+        // DIPLOMA - Marksheet
+        // =============================
+        // params.append('entry.223991078', formData.diploma.marksheetLink);
+
+        // =============================
+        // DOCUMENTS
+        // =============================
+        // params.append('entry.360810194', formData.documents.photoLink);
+        // params.append('entry.1340368622', formData.documents.admitCardLink);
+        // params.append('entry.872240053', formData.documents.ipuFormLink);
+        // params.append('entry.1365305965', formData.documents.candidateSignatureLink);
+        // params.append('entry.1105852746', formData.documents.parentSignatureLink);
+        // params.append('entry.225100023', formData.documents.gapCertificateLink);
+        // params.append('entry.1440484553', formData.documents.aadharCardLink);
 
 
-      params.append('entry.371585222', formData.payment.paymentProofLink);
-      
-      // ===========
-      // META
-      // =============================
-      params.append('fvv', '1');
-      params.append('fbzx', Date.now().toString());
-      params.append('pageHistory', '0');
+        // params.append('entry.371585222', formData.payment.paymentProofLink);
+
+        // ===========
+        // META
+        // =============================
+        params.append('fvv', '1');
+        params.append('fbzx', Date.now().toString());
+        params.append('pageHistory', '0');
 
         const formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSdItCPn-Op1wpy1qs87T_A0e67pBUkNroDOPq5G6kEgIoPeLQ/formResponse';
 
@@ -589,7 +593,7 @@ export default function AdmissionForm() {
           setTimeout(() => {
             try {
               document.body.removeChild(iframe);
-            } catch (e:any) {
+            } catch (e: any) {
               console.log("Iframe already removed", e);
             }
             alert("Form submitted successfully! Please press OK to download the processed form.");
@@ -606,7 +610,7 @@ export default function AdmissionForm() {
   };
 
   const nextTab = () => {
-    const tabs = ["program", "personal", "education", "documents", "payment", "review"]
+    const tabs = ["program", "personal", "education", "payment", "review", "submission"]
     const currentIndex = tabs.indexOf(activeTab)
     if (currentIndex < tabs.length - 1) {
       setActiveTab(tabs[currentIndex + 1])
@@ -614,7 +618,7 @@ export default function AdmissionForm() {
   }
 
   const prevTab = () => {
-    const tabs = ["program", "personal", "education", "documents", "payment", "review"]
+    const tabs = ["program", "personal", "education", "payment", "review", "submission"]
     const currentIndex = tabs.indexOf(activeTab)
     if (currentIndex > 0) {
       setActiveTab(tabs[currentIndex - 1])
@@ -713,17 +717,21 @@ export default function AdmissionForm() {
                   <BookOpen className="h-4 w-4" />
                   <span className="hidden sm:inline">Education</span>
                 </TabsTrigger>
-                <TabsTrigger value="documents" className="flex items-center gap-2 cursor-pointer">
+                {/* <TabsTrigger value="documents" className="flex items-center gap-2 cursor-pointer">
                   <FileText className="h-4 w-4" />
                   <span className="hidden sm:inline">Documents</span>
-                </TabsTrigger>
+                </TabsTrigger> */}
                 <TabsTrigger value="payment" className="flex items-center gap-2 cursor-pointer">
                   <CreditCard className="h-4 w-4" />
                   <span className="hidden sm:inline">Payment</span>
                 </TabsTrigger>
                 <TabsTrigger value="review" className="flex items-center gap-2 cursor-pointer">
                   <FileText className="h-4 w-4" />
-                  <span className="hidden sm:inline">Review</span>
+                  <span className="hidden sm:inline">Review & PDF</span>
+                </TabsTrigger>
+                <TabsTrigger value="submission" className="flex items-center gap-2 cursor-pointer">
+                  <Send className="h-4 w-4" />
+                  <span className="hidden sm:inline">Submit</span>
                 </TabsTrigger>
               </TabsList>
 
@@ -752,17 +760,15 @@ export default function AdmissionForm() {
               />
 
               {/* Documents Tab */}
-              <DocumentDetails
+              {/* <DocumentDetails
                 formData={formData.documents}
                 handleFormDataChange={(field, value) => handleFormDataChange('documents', field, value)}
                 nextTab={nextTab}
                 prevTab={prevTab}
-              />
+              /> */}
 
               {/* Payment Tab */}
               <PaymentDetails
-                formData={formData.payment}
-                handleFormDataChange={(field, value) => handleFormDataChange('payment', field, value)}
                 prevTab={prevTab}
                 nextTab={nextTab}
               />
@@ -770,6 +776,13 @@ export default function AdmissionForm() {
               {/* Review and Submit Tab */}
               <ReviewAndSubmit
                 formData={formData}
+                prevTab={prevTab}
+                nextTab={nextTab}
+                handleGeneratePdf={() => savePdf(false)}
+              />
+
+              {/* Final Submission Tab */}
+              <FinalSubmission
                 prevTab={prevTab}
                 handleSubmit={handleSubmit}
               />

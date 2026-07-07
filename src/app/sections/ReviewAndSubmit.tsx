@@ -3,7 +3,7 @@ import { TabsContent } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { ChevronLeft, ExternalLink, Send } from "lucide-react";
+import { ChevronLeft, ChevronRight, ExternalLink, FileText } from "lucide-react";
 import Image from "next/image";
 
 interface ReviewAndSubmitProps {
@@ -46,7 +46,7 @@ interface ReviewAndSubmitProps {
       totalMarksObtained: string;
       maximumMarks: string;
       percentage: string;
-      marksheetLink: string;
+      // marksheetLink: string;
     };
     twelfth: {
       board: string;
@@ -65,7 +65,7 @@ interface ReviewAndSubmitProps {
       totalMarksObtained: string;
       maximumMarks: string;
       percentage: string;
-      marksheetLink: string;
+      // marksheetLink: string;
     };
     diploma?: {
       university: string;
@@ -94,29 +94,31 @@ interface ReviewAndSubmitProps {
         marksObtained: string;
         percentage: string;
       };
-      marksheetLink: string;
+      // marksheetLink: string;
     };
-    documents: {
-      photoLink: string;
-      admitCardLink: string;
-      ipuFormLink: string;
-      candidateSignatureLink: string;
-      parentSignatureLink: string;
-      gapCertificateLink: string;
-      aadharCardLink: string;
-    };
-    payment: {
-      paymentProofLink: string;
-    };
+    // documents: {
+    //   photoLink: string;
+    //   admitCardLink: string;
+    //   ipuFormLink: string;
+    //   candidateSignatureLink: string;
+    //   parentSignatureLink: string;
+    //   gapCertificateLink: string;
+    //   aadharCardLink: string;
+    // };
+    // payment: {
+    //   paymentProofLink: string;
+    // };
   };
   prevTab: () => void;
-  handleSubmit: () => void;
+  nextTab: () => void;
+  handleGeneratePdf: () => void;
 }
 
 const ReviewAndSubmit: React.FC<ReviewAndSubmitProps> = ({
   formData,
   prevTab,
-  handleSubmit
+  nextTab,
+  handleGeneratePdf
 }) => {
 
   const formatDate = (dateString: string) => {
@@ -234,7 +236,7 @@ const ReviewAndSubmit: React.FC<ReviewAndSubmitProps> = ({
     <TabsContent value="review" className="px-6 pb-6">
       <Card>
         <CardHeader>
-          <CardTitle>Review & Submit</CardTitle>
+          <CardTitle>Review & PDF</CardTitle>
           <CardDescription>Please review your information before submitting</CardDescription>
         </CardHeader>
         <CardContent className="space-y-6" id="download">
@@ -313,7 +315,7 @@ const ReviewAndSubmit: React.FC<ReviewAndSubmitProps> = ({
                 <p className="self-end pb-5"><strong>Total Marks:</strong> {formData.tenth.totalMarksObtained} / {formData.tenth.maximumMarks}</p>
                 <p className="self-end pb-5"><strong>Percentage:</strong> {formData.tenth.percentage}%</p>
               </div>
-              <div className="py-2">{renderDocument(formData.tenth.marksheetLink, "10th Marksheet and Passing Certificate", true)}</div>
+              {/* <div className="py-2">{renderDocument(formData.tenth.marksheetLink, "10th Marksheet and Passing Certificate", true)}</div> */}
 
               <h4 className="font-medium mt-4">Class XII</h4>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
@@ -340,7 +342,7 @@ const ReviewAndSubmit: React.FC<ReviewAndSubmitProps> = ({
                 <p><strong>Total Marks:</strong> {formData.twelfth.totalMarksObtained} / {formData.twelfth.maximumMarks}</p>
                 <p><strong>Percentage:</strong> {formData.twelfth.percentage}%</p>
               </div>
-              <div className="py-2">{renderDocument(formData.twelfth.marksheetLink, "12th Marksheet and Passing Certificate ( Both sides )", true)}</div>
+              {/* <div className="py-2">{renderDocument(formData.twelfth.marksheetLink, "12th Marksheet and Passing Certificate ( Both sides )", true)}</div> */}
 
               {formData.diploma?.university && (
                 <>
@@ -379,7 +381,7 @@ const ReviewAndSubmit: React.FC<ReviewAndSubmitProps> = ({
                       <p className="self-end pb-5"><strong>Percentage:</strong> {formData.diploma.aggregate.percentage}%</p>
                     </div>
 
-                    <div>{renderDocument(formData.diploma.marksheetLink, "Diploma Marksheet of all semester examinations and Passing Certificate (for Lateral Entry)", true)}</div>
+                    {/* <div>{renderDocument(formData.diploma.marksheetLink, "Diploma Marksheet of all semester examinations and Passing Certificate (for Lateral Entry)", true)}</div> */}
                   </div>
                 </>
               )}
@@ -389,7 +391,7 @@ const ReviewAndSubmit: React.FC<ReviewAndSubmitProps> = ({
           <Separator />
 
           <div className="w-full" id="page3">
-            <div >
+            {/* <div >
               <h3 className="text-lg font-semibold mb-2">Document Uploads</h3>
               <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-6 text-sm">
                 <div>{renderDocument(formData.documents.photoLink, "Candidate Photo", true)}</div>
@@ -400,42 +402,21 @@ const ReviewAndSubmit: React.FC<ReviewAndSubmitProps> = ({
                 <div>{renderDocument(formData.documents.gapCertificateLink, "Gap year certificate ( if any )", true)}</div>
                 <div>{renderDocument(formData.documents.aadharCardLink, "Copy of Adhaar Card", true)}</div>
               </div>
-            </div>
+            </div> */}
 
             <Separator className="my-5" />
 
-            <div>
+            {/* <div>
               <h3 className="text-lg font-semibold mb-2">Payment</h3>
               <div className="max-w-xs">
                 {renderDocument(formData.payment.paymentProofLink, "Payment Receipt", true)}
               </div>
-            </div>
+            </div> */}
 
             <div className="bg-amber-50 p-4 rounded-lg border border-amber-200 mt-6">
               <p className="text-amber-700 text-sm font-medium text-justify">
-                I understand that by merely submitting application form under management quota does not entitle/gurantee me the admission in Maharaja Surajmal Institute of Technology and if admission is granted then I hereby solemnly affirm and declare that I fulfill the eligibility conditions prescribed by the GGSIP University and my admission would be provisional and subject to final ratification by the GGSIPU on verification. I have also read the Admission Brochure of GGSIPU for 2026-2027 and understood allocation and reservation of seats and manner of admission. I have carefully read and verified the information furnished by my son/daughter/ward and affirm that it is true and correct and He/She fulfills the eligibility conditions as mentioned in the Admission Bulletin / Rules of GGSIPU.
+                Do generate PDF here, it will be required on next steps.
               </p>
-            </div>
-
-            <div className="bg-amber-50 p-4 rounded-lg border border-amber-200 mt-6 text-justify">
-              <h4 className="text-amber-800 font-semibold mb-2">INSTRUCTIONS</h4>
-              <p className="text-amber-700 text-sm font-medium mb-3">
-                Candidates should annex the following set of Xerox Copy with this form while depositing at Maharaja Surajmal Institute of Technology for compilation of documents. Original documents will be required during Counselling.<br /> All the drive links given should have public access. Incomplete form will be summarily rejected during scrutiny:
-              </p>
-
-              <ol className="list-decimal text-amber-700 text-sm font-medium pl-5 space-y-1">
-                <li>Duly Submitted Filled Up Online Registration Form of GGSIPU in the portal for relevant programme.</li>
-                <li>Admit Card and Rank Proof.</li>
-                <li>10th Marksheet and Passing Certificate.</li>
-                <li>12th Marksheet and Passing Certificate.</li>
-                <li>Diploma Marksheet of all semester examinations and Passing Certificate (for Lateral Entry).</li>
-                <li>Caste/Category Certificate, if belongs to reverse category/reserved seat.</li>
-                <li>Gap Year Certificate (If any).</li>
-                <li>Copy of Adhaar Card.</li>
-                <li>Proof of Payment of registration / Processing Fee of RS 2500/- only.</li>
-              </ol>
-
-              <p className="font-bold text-amber-700 text-sm space-y-1 pt-3">After submitting the form , kindly send the downloaded pdf copy of this form to <a className="text-amber-800 underline hover:text-amber-600" href="mailto:mq_admissions_2026-27@msit.in">mq_admissions_2026-27@msit.in</a> </p>
             </div>
           </div>
         </CardContent>
@@ -446,10 +427,17 @@ const ReviewAndSubmit: React.FC<ReviewAndSubmitProps> = ({
           <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
             <Button
               type="button"
-              onClick={handleSubmit}
+              onClick={handleGeneratePdf}
               className="bg-green-600 hover:bg-green-700 flex items-center gap-2 w-full sm:w-auto cursor-pointer"
             >
-              <Send className="h-4 w-4" /> Submit Application
+              <FileText className="h-4 w-4" /> Generate PDF
+            </Button>
+            <Button
+              type="button"
+              onClick={nextTab}
+              className="bg-blue-600 hover:bg-blue-700 flex items-center gap-2 w-full sm:w-auto cursor-pointer"
+            >
+              Next <ChevronRight className="h-4 w-4" />
             </Button>
           </div>
         </CardFooter>

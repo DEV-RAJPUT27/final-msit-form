@@ -264,7 +264,7 @@ const ProgramSelection: React.FC<ProgramSelectionProps> = ({
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="roll-number">NLT(JEE)/CET Roll No.(L.E.) *</Label>
+              <Label htmlFor="roll-number">NLT(JEE) Application No./CET Roll No.(L.E.) *</Label>
               <Input
                 id="roll-number"
                 type="text"

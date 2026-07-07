@@ -27,7 +27,6 @@ interface EducationDetailsProps {
       totalMarksObtained: string;
       maximumMarks: string;
       percentage: string;
-      marksheetLink: string;
     };
     twelfth: {
       board: string;
@@ -46,7 +45,6 @@ interface EducationDetailsProps {
       totalMarksObtained: string;
       maximumMarks: string;
       percentage: string;
-      marksheetLink: string;
     };
     diploma: {
       university: string;
@@ -75,7 +73,6 @@ interface EducationDetailsProps {
         marksObtained: string;
         percentage: string;
       };
-      marksheetLink: string;
     };
   };
   handleFormDataChange: (section: string, field: string, value: any) => void;
@@ -333,18 +330,6 @@ const EducationDetails: React.FC<EducationDetailsProps> = ({
                   required
                 />
               </div>
-            </div>
-
-            <div className="space-y-2 mt-4">
-              <Label htmlFor="tenth-marksheet">Class X Marksheet Link *</Label>
-              <Input
-                id="tenth-marksheet"
-                name="entry.159506664"
-                placeholder="Drive link (set access to 'anyone with the link')"
-                value={formData.tenth.marksheetLink}
-                onChange={(e) => handleFormDataChange("tenth", "marksheetLink", e.target.value)}
-                required
-              />
             </div>
           </div>
 
@@ -613,18 +598,6 @@ const EducationDetails: React.FC<EducationDetailsProps> = ({
                 />
               </div>
             </div>
-
-            <div className="space-y-2 mt-4">
-              <Label htmlFor="twelfth-marksheet">Class XII Marksheet Link ( Provide both side image in pdf ) *</Label>
-              <Input
-                id="twelfth-marksheet"
-                name="entry.736058055"
-                placeholder="Drive link (set access to 'anyone with the link')"
-                value={formData.twelfth.marksheetLink}
-                onChange={(e) => handleFormDataChange("twelfth", "marksheetLink", e.target.value)}
-                required
-              />
-            </div>
           </div>
 
           <Separator />
@@ -859,17 +832,6 @@ const EducationDetails: React.FC<EducationDetailsProps> = ({
                   />
                 </div>
               </div>
-            </div>
-
-            <div className="space-y-2 mt-4">
-              <Label htmlFor="diploma-marksheet">Diploma / B.Sc. Degree marksheets of all semesters examination and passing certificate</Label>
-              <Input
-                id="diploma-marksheet"
-                name="entry.1380047415"
-                placeholder="Drive link (set access to 'anyone with the link')"
-                value={formData.diploma.marksheetLink}
-                onChange={(e) => handleFormDataChange("diploma", "marksheetLink", e.target.value)}
-              />
             </div>
           </div>
         </CardContent>
